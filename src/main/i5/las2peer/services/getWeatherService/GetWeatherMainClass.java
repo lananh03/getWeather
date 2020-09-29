@@ -51,9 +51,9 @@ import com.google.gson.Gson;
 				description = "A las2peer Template Service for demonstration purposes.",
 				termsOfService = "http://your-terms-of-service-url.com",
 				contact = @Contact(
-						name = "John Doe",
-						url = "provider.com",
-						email = "john.doe@provider.com"),
+						name = "Tran Lan Anh",
+						url = "https://las2peer.org",
+						email = "tran@dbis.rwth-aachen.de"),
 				license = @License(
 						name = "your software license name",
 						url = "http://your-software-license-url.com")))
