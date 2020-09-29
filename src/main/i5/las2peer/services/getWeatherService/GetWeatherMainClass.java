@@ -81,11 +81,9 @@ public class GetWeatherMainClass extends RESTService {
 			
 		String onAction = "retrieving HTML";
 		try {
-				Scanner scanner;
-				
+				Scanner scanner;				
 				scanner = new Scanner(new File("./frontEnd/index.html"));
-				String html = "";
-				
+				String html = "";			
 				html = scanner.useDelimiter("\\A").next();
 				scanner.close();
 
@@ -101,9 +99,7 @@ public class GetWeatherMainClass extends RESTService {
 	@Path("/getTemp/{city}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getWeather(@PathParam("city") String city) {
-			
-		//String origUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
-		//String appid = "&appid=347e72f54a7cde54465418abd431fcf0";	
+				
 		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=347e72f54a7cde54465418abd431fcf0";
 		Request requestUrl = new Request.Builder().url(url).build();			  			  
 		OkHttpClient client = new OkHttpClient();
