@@ -2,13 +2,13 @@ package i5.las2peer.services.getWeatherService;
 
 public class WeatherInfo {
 
-	private Main main;
+	private Temperature main;
 	private String name;
 	
-	public Main getMain() {
+	public Temperature getTemperature() {
 		return main;
 	}
-	public void setMain(Main main) {
+	public void setMain(Temperature main) {
 		this.main = main;
 	}
 	public String getName() {
