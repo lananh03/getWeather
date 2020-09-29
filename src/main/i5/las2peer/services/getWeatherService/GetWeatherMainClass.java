@@ -102,9 +102,10 @@ public class GetWeatherMainClass extends RESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getWeather(@PathParam("city") String city) {
 			
-		String origUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
-		String apiKey = "&appid=347e72f54a7cde54465418abd431fcf0";		  
-		Request requestUrl = new Request.Builder().url(origUrl + city + apiKey).build();			  			  
+		//String origUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
+		//String appid = "&appid=347e72f54a7cde54465418abd431fcf0";	
+		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=347e72f54a7cde54465418abd431fcf0";
+		Request requestUrl = new Request.Builder().url(url).build();			  			  
 		OkHttpClient client = new OkHttpClient();
 		Gson gsonObj = new Gson();		
 		WeatherInfo result = null;
