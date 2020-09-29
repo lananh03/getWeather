@@ -19,5 +19,6 @@
 			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/las2peer-ShortMessage-Service/lib/las2peer-bundle-0.7.6.jar"/>
 	<classpathentry kind="output" path="output"/>
 </classpath>

@@ -61,7 +61,7 @@
 			/*--end reset--*/
 			body {
 				font-family: 'Open Sans', sans-serif;
-				background: url(https://cdn2.vectorstock.com/i/1000x1000/07/81/seamless-weather-forecast-background-vector-2000781.jpg);
+				/*background: url(https://cdn2.vectorstock.com/i/1000x1000/07/81/seamless-weather-forecast-background-vector-2000781.jpg);*/
 				background-attachment: fixed;
 				-webkit-background-size: cover;
 				-moz-background-size: cover;
@@ -127,7 +127,7 @@
 			}
 			.agile-item h6 {
 				font-size: 0.9em;
-				color: #fff;
+				color: white;
 				font-weight: 300;
 			}
 
@@ -323,8 +323,8 @@
 						</script>
 						<!-- end Date js -->
 					</div>
-					<h2>${TEMP}<span>o</span>C</h2>
-					<h4>${NAME_CITY}</h4>
+					<h2>~<span>o</span>C</h2>
+					<h4>~</h4>
 				</div>
 				<div class="inputCity">
 					<input type="text" name="" id="inputName" class="btn btn-primary" placeholder="Input City's name (English: hanoi, tokyo,..)" value="">
@@ -341,11 +341,11 @@
 						let oldName = $(".weather-details h4").html(); 
 						$("#inputName").val(""); 
 
-						let oldPath = window.location.href; //get current URL location
+						let oldPath = window.location.href;
 						let newPath = "";
-						 
+					 
 						let endSlice = oldPath.length - oldName.length;
-						
+					
 						if(oldPath.indexOf("getTemp") == -1){
 							let finalCharIndex = oldPath.length - 1;
 							if(oldPath[finalCharIndex] == "/" ){
@@ -353,25 +353,22 @@
 							}else{
 								newPath = oldPath + "/getTemp/" + name;
 							}
-						}
-						else{
+						} else {
 							newPath = oldPath.slice(0, endSlice) + name;
 						}
-						
-						history.pushState("", "", newPath); //replace oldPath by newPath
+					
+						history.pushState("", "", newPath);
 
 						getNewRs(name).then(rs=>{
 							let temp = Math.round((rs.main.temp - 273.15));
 							$(".weather-details h2").html(temp + `<span>o</span>C`);
 							$(".weather-details h4").html(rs.name);
-							
-							
+						
 						}).catch(err => {
 							showErrorLog(name);
 						})
 					});
-
-					
+				
 					async function getNewRs(name){
 						let rs= null;
 						await $.ajax({
@@ -389,7 +386,6 @@
 					function showErrorLog(err){
 						alert("Invalid name! " + err + " is not supported in the api! Please try again!");
 					}
-
 					
 				</script>
 			</div>	

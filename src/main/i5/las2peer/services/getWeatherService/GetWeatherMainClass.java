@@ -25,11 +25,11 @@ import io.swagger.annotations.Contact;
 import io.swagger.annotations.Info;
 import io.swagger.annotations.License;
 import io.swagger.annotations.SwaggerDefinition;
-
-import com.google.gson.Gson;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.ResponseBody;
+
+import com.google.gson.Gson;
 
 // TODO Describe your own service
 /**
@@ -72,88 +72,60 @@ public class GetWeatherMainClass extends RESTService {
 	 * @return Returns an HTTP response with the username as string content.
 	 */
 	
-	@GET
-	@Path("/getTemp/{location}")
-	@Produces(MediaType.TEXT_HTML)
-	
-	
-	public Response getWeather(@PathParam("location")String location) {
-		  
-		  OkHttpClient client = new OkHttpClient();
-          Gson gson = new Gson();
-		  String API_KEY = "347e72f54a7cde54465418abd431fcf0";
-	      Request urlString = new Request.Builder().url("http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + API_KEY).build();
-	      JsonResult data = null;
-	      String onAction = "Retrieving HTML";
-	      try {
-
-	    	okhttp3.Response response = client.newCall(urlString).execute();
-	        ResponseBody curWeather = response.body();
-	        data = gson.fromJson(curWeather.string(), JsonResult.class);
-	        Scanner scanner;
-	        scanner = new Scanner(new File("./frontEnd/index.html"));
-	        String html = "";
-	        html = scanner.useDelimiter("\\A").next();
-	        scanner.close();
-	        
-	        html = fillPlaceHolder(html, "NAME_CITY", data.getName());
-	        int newTem = (int)(data.getMain().getTemp() - 273.15);
-	        html = fillPlaceHolder(html, "TEMP", String.valueOf(newTem));
-	    
-	        return Response.status(Status.OK).entity(html).build();
-	       
-	      } catch (Exception e) {
-	            e.printStackTrace();
-	            return internalError(onAction);
-	  	  }
-	}
-	
+	// get Weather Service's Template
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
-	
-	public Response getWeatherTemplate() throws Exception{
 		
-		String onAction = "Retrieving HTML";
+	public Response getWeatherTeamplate() throws Exception{
+			
+		String onAction = "retrieving HTML";
 		try {
-			//load template
-			Scanner scanner;
-			
-			scanner = new Scanner(new File("./frontEnd/index.html"));
-			String html = "";
-			
-			html = scanner.useDelimiter("\\A").next();
-			scanner.close();
-			
-			html = fillPlaceHolder(html, "NAME_CITY", "~");
-			html = fillPlaceHolder(html, "TEMP", "~");
-			
-			return Response.status(Status.OK).entity(html).build();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return internalError(onAction);
-		}
-	}
-	
-	private Response internalError(String onAction) {
-		return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Internal error while " + onAction)
-				.type(MediaType.TEXT_PLAIN).build();
-		
-	}
-	
-	private String fillPlaceHolder(String data, String placeholder, String value) {
-		Pattern p = Pattern.compile("\\$\\{" + placeholder + "\\}");
-		Matcher m = p.matcher(data);
-		
-		String adaptedform = new String(data);
-		
-		while(m.find()) {
-			String tag = m.group().substring(2, m.group().length() -1 );
-			adaptedform = adaptedform.replaceAll("\\$\\{" + tag +"\\}", value);
-		}
+				Scanner scanner;
+				
+				scanner = new Scanner(new File("./frontEnd/index.html"));
+				String html = "";
+				
+				html = scanner.useDelimiter("\\A").next();
+				scanner.close();
 
-		return adaptedform;
+				return Response.status(Status.OK).entity(html).build();
+		} catch (Exception e) {
+				e.printStackTrace();
+				return internalError(onAction);
+		}
+	}
+	
+	// Get weather's info of a city 
+	@GET
+	@Path("/getTemp/{city}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response getWeather(@PathParam("city") String city) {
+			
+		String origUrl = "http://api.openweathermap.org/data/2.5/weather?q=";
+		String apiKey = "&appid=347e72f54a7cde54465418abd431fcf0";		  
+		Request requestUrl = new Request.Builder().url(origUrl + city + apiKey).build();			  			  
+		OkHttpClient client = new OkHttpClient();
+		Gson gsonObj = new Gson();		
+		WeatherInfo result = null;
+		String onAction = "retrieving HTML";		
+		
+		try {	
+				okhttp3.Response resp = client.newCall(requestUrl).execute();		    
+		        ResponseBody info = resp.body();		        
+		        result = gsonObj.fromJson(info.string(), WeatherInfo.class);				
+				return Response.status(Status.OK).entity(result).build();
+				
+		} catch (Exception e) {
+		        e.printStackTrace();
+		        return internalError(onAction);
+		}	     
+	}
+
+	// return response's error 
+	private Response internalError(String onAction) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Internal error while " + onAction + "!")
+					.type(MediaType.TEXT_PLAIN).build();
 	}
 	
 }
