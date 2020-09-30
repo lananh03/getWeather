@@ -22,7 +22,7 @@ http://localhost:8080/weather/
 
 The result in json form will be available at:
 
-http://localhost:8080/weather/getTemp/{city name}
+http://localhost:8080/weather/getTemp/{city_name}
 
 
 
