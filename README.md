@@ -16,5 +16,13 @@ To start GetWeather Service, run the start-script from the bin/ directory
 
 /bin/start_network.bat
 
+Once it start successfully, the getWeather service is available at the link as follow:
+
+http://localhost:8080/weather/
+
+The result in json form will be available at:
+
+http://localhost:8080/weather/getTemp/{city name}
+
 
 
