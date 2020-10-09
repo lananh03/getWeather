@@ -73,7 +73,7 @@ public class GetWeatherMainClass extends RESTService {
 	 */
 	
 	// get Weather Service's Template
-	@GET
+/*	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
 		
@@ -93,7 +93,7 @@ public class GetWeatherMainClass extends RESTService {
 				return internalError(onAction);
 		}
 	}
-	
+	*/
 	// Get weather's info of a city 
 	@GET
 	@Path("/getTemp/{city}")
