@@ -61,10 +61,11 @@ import com.google.gson.Gson;
 // TODO Your own service class
 public class GetWeatherMainClass extends RESTService {
 	
-	//private JsonResult data;
+	private String appid;
 	
 	public GetWeatherMainClass() {
-
+		
+		setFieldValues();
 	}
 
 	/**
@@ -78,7 +79,7 @@ public class GetWeatherMainClass extends RESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getWeather(@PathParam("city") String city) {
 				
-		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=347e72f54a7cde54465418abd431fcf0";
+		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + appid;
 		Request requestUrl = new Request.Builder().url(url).build();			  			  
 		OkHttpClient client = new OkHttpClient();
 		Gson gsonObj = new Gson();		
