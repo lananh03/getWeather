@@ -93,22 +93,22 @@ public class ServiceTest {
 		 * Tests the validation method.
 		 * 
 		 */
-		@Test
-		public void testGetWeather() {
-/*			try {
-				MiniClient client = new MiniClient();
-				client.setConnectorEndpoint(connector.getHttpEndpoint());
-				client.setLogin(testAgent.getIdentifier(), testPass);
-				
-				ClientResponse result = client.sendRequest("GET", mainPath + "Aachen", "");
-				Assert.assertEquals(200, result.getHttpCode());
-				// YOUR RESULT VALUE HERE
-				System.out.println("Result of 'testGetWeather': " + result.getResponse().trim());
-			} catch (Exception e) {
-				e.printStackTrace();
-				Assert.fail(e.toString());
-			}*/
-		}
+//		@Test
+//		public void testGetWeather() {
+///*			try {
+//				MiniClient client = new MiniClient();
+//				client.setConnectorEndpoint(connector.getHttpEndpoint());
+//				client.setLogin(testAgent.getIdentifier(), testPass);
+//				
+//				ClientResponse result = client.sendRequest("GET", mainPath + "Aachen", "");
+//				Assert.assertEquals(200, result.getHttpCode());
+//				// YOUR RESULT VALUE HERE
+//				System.out.println("Result of 'testGetWeather': " + result.getResponse().trim());
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//				Assert.fail(e.toString());
+//			}*/
+//		}
 
 		/**
 		 * 

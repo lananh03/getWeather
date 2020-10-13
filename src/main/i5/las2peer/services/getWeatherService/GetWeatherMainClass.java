@@ -72,28 +72,6 @@ public class GetWeatherMainClass extends RESTService {
 	 * @return Returns an HTTP response with the username as string content.
 	 */
 	
-	// get Weather Service's Template
-/*	@GET
-	@Path("/")
-	@Produces(MediaType.TEXT_HTML)
-		
-	public Response getWeatherTeamplate() throws Exception{
-			
-		String onAction = "retrieving HTML";
-		try {
-				Scanner scanner;				
-				scanner = new Scanner(new File("./frontEnd/index.html"));
-				String html = "";			
-				html = scanner.useDelimiter("\\A").next();
-				scanner.close();
-
-				return Response.status(Status.OK).entity(html).build();
-		} catch (Exception e) {
-				e.printStackTrace();
-				return internalError(onAction);
-		}
-	}
-	*/
 	// Get weather's info of a city 
 	@GET
 	@Path("/getTemp/{city}")
