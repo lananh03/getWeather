@@ -81,7 +81,7 @@ public class GetWeatherMainClass extends RESTService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getWeather(@PathParam("city") String city) {
 				
-		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&" + appid;
+		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + appid;
 		Request requestUrl = new Request.Builder().url(url).build();			  			  
 		OkHttpClient client = new OkHttpClient();
 		Gson gsonObj = new Gson();		
