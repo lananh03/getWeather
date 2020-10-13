@@ -15,6 +15,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import i5.las2peer.api.ManualDeployment;
 import i5.las2peer.restMapper.RESTService;
 import i5.las2peer.restMapper.annotations.ServicePath;
 import io.swagger.annotations.Api;
@@ -58,6 +59,7 @@ import com.google.gson.Gson;
 						name = "your software license name",
 						url = "http://your-software-license-url.com")))
 @ServicePath("weather")
+@ManualDeployment
 // TODO Your own service class
 public class GetWeatherMainClass extends RESTService {
 	
