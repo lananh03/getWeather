@@ -66,7 +66,7 @@ public class GetWeatherMainClass extends RESTService {
 	private String appid;
 	
 	public GetWeatherMainClass() {
-		
+		//read and set properties values
 		setFieldValues();
 	}
 
