@@ -8,15 +8,13 @@ ENV TZ=Europe/Berlin
 RUN addgroup -g 1000 -S las2peer && \
     adduser -u 1000 -S las2peer -G las2peer
     
-RUN set -x \
-    && apt-get update \
-    && apt-get install -y nginx nano vim
+RUN apk add --update nginx nano vim
     
 COPY --chown=las2peer:las2peer . /src
 WORKDIR /src
 
 RUN chmod -R a+rwx /src
-RUN chmod +x /src/docker-entrypoint.sh
+
 # run the rest as unprivileged user
 USER las2peer
 RUN ant jar startscripts
