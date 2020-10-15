@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+ las2peer-getweather:
+  build: .
+ nginx:
+  image: "nginx:alpine"
+  ports:
+   - 8080:80
+  volumes:
+   - /frontEnd:/usr/share/nginx/html

@@ -8,16 +8,20 @@ ENV TZ=Europe/Berlin
 RUN addgroup -g 1000 -S las2peer && \
     adduser -u 1000 -S las2peer -G las2peer
     
-RUN apk add --update nginx nano vim
+RUN apk add nginx
     
 COPY --chown=las2peer:las2peer . /src
 WORKDIR /src
+COPY /frontEnd /usr/share/nginx/html
+
 
 RUN chmod -R a+rwx /src
+RUN chmod +x /src/docker-entrypoint.sh
+
 
 # run the rest as unprivileged user
 USER las2peer
 RUN ant jar startscripts
 
 EXPOSE $LAS2PEER_PORT
-ENTRYPOINT ["/bin/start_network.bat"]
+ENTRYPOINT ["/src/docker-entrypoint.sh"]
