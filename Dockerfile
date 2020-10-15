@@ -8,11 +8,11 @@ ENV TZ=Europe/Berlin
 RUN addgroup -g 1000 -S las2peer && \
     adduser -u 1000 -S las2peer -G las2peer
     
-RUN apk add nginx
+#RUN apk add nginx
     
 COPY --chown=las2peer:las2peer . /src
 WORKDIR /src
-COPY /frontEnd /usr/share/nginx/html
+#COPY /frontEnd /usr/share/nginx/html
 
 
 RUN chmod -R a+rwx /src
