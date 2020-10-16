@@ -47,7 +47,7 @@ async function getNewRs(name){
     let rs= null;
     await $.ajax({
         type: "GET",
-        url:  "http://10.108.126.2:8080/weather/getTemp/"+name,
+        url:  "http://localhost:8888/weather/getTemp/"+name,
 	   // url: "http://api.openweathermap.org/data/2.5/weather?q=" + name + "&appid=347e72f54a7cde54465418abd431fcf0",
         dataType: "json",
         timeout:30000,
