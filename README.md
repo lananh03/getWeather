@@ -9,7 +9,7 @@ This service is based on las2peer and can be used to get weather information of 
 
 ### Build Service
 Build the project with the following command 
-<p>'ant all'</p>
+<p>`ant all`</p>
 
 ### Start Service
 To start GetWeather Service, run the start-script from the bin/ directory
@@ -23,7 +23,7 @@ http://localhost:8888/weather/getTemp/{city_name}
 ### How to run using Docker
 Build the image:
 <p>
-'docker-compose up'
+`docker-compose up`
 </p>
 The service will available at http://localhost:8888/weather/getTemp/{city_name} and the las2peer node is availbale via port 9011
 
