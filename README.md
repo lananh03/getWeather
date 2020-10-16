@@ -23,10 +23,9 @@ http://localhost:8888/weather/getTemp/{city_name}
 ### How to run using Docker
 Build the image:
 <p>
-```bash
-docker-compose up
-``` </p>
-The service will available at http://localhost:8888/weather/ and the las2peer node is availbale via port 9011
+'docker-compose up'
+</p>
+The service will available at http://localhost:8888/weather and the las2peer node is availbale via port 9011
 
 The frontEnd will available at http://localhost
 
