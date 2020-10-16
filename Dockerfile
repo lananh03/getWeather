@@ -18,7 +18,6 @@ WORKDIR /src
 RUN chmod -R a+rwx /src
 RUN chmod +x /src/docker-entrypoint.sh
 
-
 # run the rest as unprivileged user
 USER las2peer
 RUN ant jar startscripts

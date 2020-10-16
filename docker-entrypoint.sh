@@ -67,11 +67,11 @@ echo external_address = $(curl -s https://ipinfo.io/ip):${LAS2PEER_PORT} > etc/p
 # start the service within a las2peer node
 if [[ -z "${@}" ]]
 then
-#    if [ -n "$LAS2PEER_ETH_HOST" ]; then
-       # exec ${LAUNCH_COMMAND} --node-id-seed $NODE_ID_SEED --observer --ethereum-mnemonic "$(selectMnemonic)" uploadStartupDirectory startService\("'""${SERVICE}""'", "'""${SERVICE_PASSPHRASE}""'"\) startWebConnector "node=getNodeAsEthereumNode()" "registry=node.getRegistryClient()" "n=getNodeAsEthereumNode()" "r=n.getRegistryClient()" 
-#    else
-       # exec ${LAUNCH_COMMAND} --node-id-seed $NODE_ID_SEED --observer uploadStartupDirectory startService\("'""${SERVICE}""'", "'""${SERVICE_PASSPHRASE}""'"\) startWebConnector
-#    fi
-#else
+    if [ -n "$LAS2PEER_ETH_HOST" ]; then
+        exec ${LAUNCH_COMMAND} --node-id-seed $NODE_ID_SEED --ethereum-mnemonic "$(selectMnemonic)" uploadStartupDirectory startService\("'""${SERVICE}""'", "'""${SERVICE_PASSPHRASE}""'"\) startWebConnector "node=getNodeAsEthereumNode()" "registry=node.getRegistryClient()" "n=getNodeAsEthereumNode()" "r=n.getRegistryClient()" 
+    else
+        exec ${LAUNCH_COMMAND} --node-id-seed $NODE_ID_SEED uploadStartupDirectory startService\("'""${SERVICE}""'", "'""${SERVICE_PASSPHRASE}""'"\) startWebConnector
+    fi
+else
   exec ${LAUNCH_COMMAND} ${@}
 fi
