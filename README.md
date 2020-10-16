@@ -25,7 +25,7 @@ Build the image:
 <p>
 'docker-compose up'
 </p>
-The service will available at http://localhost:8888/weather and the las2peer node is availbale via port 9011
+The service will available at http://localhost:8888/weather/getTemp/{city_name} and the las2peer node is availbale via port 9011
 
 The frontEnd will available at http://localhost
 
