@@ -7,7 +7,7 @@ This service is based on las2peer and can be used to get weather information of 
 <p>There is an input box allowing user enter the name of the city he/she wants to know about the weather. The web frontend will then display name and temperature of the respective city.  
 </p>
 
-#### Build Service
+### Build Service
 Build the project with the following command 
 <p>'ant all'</p>
 
@@ -18,11 +18,16 @@ To start GetWeather Service, run the start-script from the bin/ directory
 
 Once it start successfully, the getWeather service is available at the link as follow:
 
-http://localhost:8080/weather/
+http://localhost:8888/weather/getTemp/{city_name}
 
-The result in json form will be available at:
+### How to run using Docker
+Build the image:
+<p>
+```
+docker-compose up
+``` </p>
+The service will available at http://localhost:8888/weather/ and the las2peer node is availbale via port 9011
 
-http://localhost:8080/weather/getTemp/{city_name}
-
+The frontEnd will available at http://localhost
 
 
