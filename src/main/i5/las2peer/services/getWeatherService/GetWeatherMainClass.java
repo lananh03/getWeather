@@ -33,7 +33,7 @@ import com.google.gson.Gson;
  * A RESTful service that provides current weather of a city.
  * 
  */
-// TODO Adjust the following configuration
+
 @Api
 @SwaggerDefinition(
 		info = @Info(
