@@ -10,8 +10,6 @@ RUN addgroup -g 1000 -S las2peer && \
     
 COPY --chown=las2peer:las2peer . /src
 WORKDIR /src
-#COPY /frontEnd /usr/share/nginx/html
-
 
 RUN chmod -R a+rwx /src
 RUN chmod +x /src/docker-entrypoint.sh
