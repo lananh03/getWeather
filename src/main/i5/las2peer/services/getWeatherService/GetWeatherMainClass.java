@@ -60,11 +60,6 @@ public class GetWeatherMainClass extends RESTService {
 		//read and set properties values
 		setFieldValues();
 	}
-
-	/**
-	 * Template of a get function.
-	 * @return Returns an HTTP response with the username as string content.
-	 */
 	
 	// Get weather's info of a city 
 	@GET
