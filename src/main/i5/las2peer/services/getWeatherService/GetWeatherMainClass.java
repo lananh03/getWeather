@@ -27,7 +27,6 @@ import okhttp3.ResponseBody;
 
 import com.google.gson.Gson;
 
-// TODO Describe your own service
 /**
  * las2peer-GetWeather-Service
  * 
