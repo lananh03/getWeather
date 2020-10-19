@@ -5,6 +5,8 @@ services:
   build: .
   ports:
    - 8888:8888
+  environment:
+   - GETWEATHER_APPID=<APP_ID>
  nginx:
   image: "nginx:alpine"
   ports:
