@@ -1,6 +1,7 @@
 FROM openjdk:8-jdk-alpine
 
 ENV LAS2PEER_PORT=9011
+ENV GETWEATHER_APPID=347e72f54a7cde54465418abd431fcf0
 
 RUN apk add --update bash mysql-client apache-ant tzdata curl && rm -f /var/cache/apk/*
 ENV TZ=Europe/Berlin
