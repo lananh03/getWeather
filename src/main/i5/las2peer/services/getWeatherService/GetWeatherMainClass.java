@@ -1,13 +1,8 @@
 package i5.las2peer.services.getWeatherService;
 
-import java.io.File;
 import java.net.HttpURLConnection;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -34,30 +29,26 @@ import com.google.gson.Gson;
 
 // TODO Describe your own service
 /**
- * las2peer-Template-Service
+ * las2peer-GetWeather-Service
  * 
- * This is a template for a very basic las2peer service that uses the las2peer WebConnector for RESTful access to it.
- * 
- * Note: If you plan on using Swagger you should adapt the information below in the SwaggerDefinition annotation to suit
- * your project. If you do not intend to provide a Swagger documentation of your service API, the entire Api and
- * SwaggerDefinition annotation should be removed.
+ * A RESTful service that provides current weather of a city.
  * 
  */
 // TODO Adjust the following configuration
 @Api
 @SwaggerDefinition(
 		info = @Info(
-				title = "las2peer Template Service",
-				version = "1.0.0",
-				description = "A las2peer Template Service for demonstration purposes.",
-				termsOfService = "http://your-terms-of-service-url.com",
+				title = "las2peer Get Weather Service",
+				version = "0.1.0",
+				description = "A las2peer service for getting current temperature of a city.",
+				termsOfService = "",
 				contact = @Contact(
 						name = "Tran Lan Anh",
 						url = "https://las2peer.org",
 						email = "tran@dbis.rwth-aachen.de"),
 				license = @License(
-						name = "your software license name",
-						url = "http://your-software-license-url.com")))
+						name = "",
+						url = "")))
 @ServicePath("weather")
 @ManualDeployment
 // TODO Your own service class
@@ -79,6 +70,18 @@ public class GetWeatherMainClass extends RESTService {
 	@GET
 	@Path("/getTemp/{city}")
 	@Produces(MediaType.APPLICATION_JSON)
+	@ApiOperation(
+			value = "getWeather",
+			notes = "Get current temperature of a city")
+	@ApiResponses(
+			value = { @ApiResponse(
+					code = HttpURLConnection.HTTP_OK,
+					message = "Get Weather service is ready!"),
+
+					@ApiResponse(
+					code = HttpURLConnection.HTTP_INTERNAL_ERROR,
+					message = "Internal Server Error") })
+	
 	public Response getWeather(@PathParam("city") String city) {
 				
 		String url = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + appid;
@@ -98,12 +101,10 @@ public class GetWeatherMainClass extends RESTService {
 		        e.printStackTrace();
 		        return internalError(onAction);
 		}	     
-	}
-
-	// return response's error 
+	} 
+	
 	private Response internalError(String onAction) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Internal error while " + onAction + "!")
-					.type(MediaType.TEXT_PLAIN).build();
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Internal error while " + onAction + "!").type(MediaType.TEXT_PLAIN).build();
 	}
 	
 }
