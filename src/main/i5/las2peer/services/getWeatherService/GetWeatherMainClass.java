@@ -50,7 +50,7 @@ import com.google.gson.Gson;
 						url = "")))
 @ServicePath("weather")
 @ManualDeployment
-// TODO Your own service class
+
 public class GetWeatherMainClass extends RESTService {
 	
 	private String appid;
