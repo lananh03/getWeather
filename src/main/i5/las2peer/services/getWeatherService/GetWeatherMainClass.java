@@ -26,6 +26,7 @@ import okhttp3.Request;
 import okhttp3.ResponseBody;
 
 import com.google.gson.Gson;
+import net.minidev.json.JSONObject;
 
 /**
  * las2peer-GetWeather-Service
@@ -82,14 +83,18 @@ public class GetWeatherMainClass extends RESTService {
 		Request requestUrl = new Request.Builder().url(url).build();			  			  
 		OkHttpClient client = new OkHttpClient();
 		Gson gsonObj = new Gson();		
+		JSONObject text = new JSONObject();
 		WeatherInfo result = null;
 		String onAction = "retrieving HTML";		
 		
 		try {	
 				okhttp3.Response resp = client.newCall(requestUrl).execute();		    
 		        ResponseBody info = resp.body();		        
-		        result = gsonObj.fromJson(info.string(), WeatherInfo.class);				
-				return Response.status(Status.OK).entity(result).build();
+		        result = gsonObj.fromJson(info.string(), WeatherInfo.class);
+		        int temp = (int)(result.getTemperature().getTemp() - 273.15);
+		        text.put("text", "The temperature in "+city+" is "+String.valueOf(temp)+"oC");
+		        text.put("closeContext", "true");
+				return Response.status(Status.OK).entity(text).build();
 				
 		} catch (Exception e) {
 		        e.printStackTrace();
